@@ -4,7 +4,7 @@ import Arrow_Button from "../../components/Arrow_Button";
 
 export default function ProfileScreen({ navigation, route }) {
   var personName = "Hassaan Ahamd";
-  var lisenceNo = 32452324;
+  var lisenceNo = 38902452324;
   const handlePress = () => {};
   return (
     <View style={styles.container}>
@@ -23,7 +23,7 @@ export default function ProfileScreen({ navigation, route }) {
         <Arrow_Button
           name="Edit Personal Info"
           onPress={() => {
-            navigation.navigate("Edit_Profile");
+            navigation.navigate("Driver_Edit_Profile_Screen");
           }}
         />
         <Arrow_Button name="Add Payment Method" onPress={handlePress} />

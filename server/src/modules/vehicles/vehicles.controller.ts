@@ -4,6 +4,7 @@ import {
   Post,
   Body,
   Patch,
+  Put,
   Param,
   Delete,
 } from '@nestjs/common';
@@ -17,6 +18,7 @@ export class VehiclesController {
 
   @Post()
   create(@Body() createVehicleDto: CreateVehicleDto) {
+    console.log('>>', createVehicleDto);
     return this.vehiclesService.create(createVehicleDto);
   }
 
@@ -30,8 +32,9 @@ export class VehiclesController {
     return this.vehiclesService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() updateVehicleDto: UpdateVehicleDto) {
+    console.log('>>', id, updateVehicleDto);
     return this.vehiclesService.update(+id, updateVehicleDto);
   }
 

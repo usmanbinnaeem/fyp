@@ -11,7 +11,7 @@ const HomeScreen = ({ navigation, route }) => {
     try {
       const token = await AsyncStorage.getItem("token");
       const jsonValue = await AsyncStorage.getItem("user");
-      const user = JSON.parse(jsonValue);
+      const user = await JSON.parse(jsonValue);
       const { sub } = user;
       const response = await fetch(`${BASE_URL}/users/${sub}`, {
         method: "GET",
@@ -24,8 +24,9 @@ const HomeScreen = ({ navigation, route }) => {
       const json = await response.json();
       if (!!json?.driver) {
         setUserDetails(json.driver);
-      } else {
-        setUserDetails(json.parent);
+        const driver = json?.driver;
+        const jsonValue = JSON.stringify(driver);
+        await AsyncStorage.setItem("driver", jsonValue);
       }
     } catch (error) {
       console.error(error);
@@ -48,10 +49,10 @@ const HomeScreen = ({ navigation, route }) => {
         <View style={[styles.container, { paddingTop: 16 }]}>
           <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
             <HomeButton
-              name="Find Vehicle"
+              name="Edit Vehicle"
               icon={require("../../assets/Track.png")}
               onPress={() => {
-                navigation.navigate("Find_Driver");
+                navigation.navigate("Edit_Vehicle_Detail");
               }}
             />
             <HomeButton

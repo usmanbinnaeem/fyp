@@ -5,6 +5,7 @@ import Toast from "react-native-toast-message";
 import Basic_Button from "../components/Basic_Button";
 import Text_Field from "../components/Text_Field";
 import jwt_decode from "jwt-decode";
+BASE_URL = "http://192.168.10.11:3000";
 
 const Login = ({ navigation }) => {
   const [phone, setPhone] = useState("");

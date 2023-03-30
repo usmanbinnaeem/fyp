@@ -11,7 +11,7 @@ export class Vehicle extends BaseEntity {
   @Column({ nullable: false })
   seats_capacity: string;
 
-  @Column()
+  @Column({ nullable: true })
   booked_seats: string;
 
   @Column()

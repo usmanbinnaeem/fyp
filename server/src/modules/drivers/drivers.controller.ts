@@ -4,6 +4,7 @@ import {
   Post,
   Body,
   Patch,
+  Put,
   Param,
   Delete,
   Query,
@@ -43,13 +44,22 @@ export class DriversController {
   //   return this.driversService.search(query);
   // }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() updateDriverDto: UpdateDriverDto) {
+    console.log('///', id, updateDriverDto);
     return this.driversService.update(+id, updateDriverDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.driversService.remove(+id);
+  }
+
+  @Post(':driverId/schools/:schoolId')
+  addSchoolToDriver(
+    @Param('driverId') driverId: number,
+    @Param('schoolId') schoolId: number,
+  ) {
+    return this.driversService.addSchoolToDriver(driverId, schoolId);
   }
 }

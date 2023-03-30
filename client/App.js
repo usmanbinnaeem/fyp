@@ -5,10 +5,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Login from "./Screens/Login";
 import Signup_option from "./Screens/User_Signup";
 import SendOTP from "./Screens/SendOTP_Screen";
-import ProfileScreen from "./Screens/Profile_Screen";
+import ProfileScreen from "./Screens/Driver/profile_screen";
 import Find_Driver from "./Screens/Find_Driver_Screen";
 import ChooseIdentity from "./Screens/Choose_Identity";
-import Edit_Profile from "./Screens/Edit_Profile_Screen";
+import Driver_Edit_Profile_Screen from "./Screens/Driver/Driver_Edit_Profile_Screen";
 import Bottom_Tab from "./Screens/Driver/Driver_Bottom_Tab";
 import OTP_Conformation from "./Screens/OTPConformation_Screen";
 import SignUp_Form from "./Screens/SignupForm_Screen";
@@ -25,6 +25,7 @@ import Edit_Driver_Profile_Screen from "./Screens/Driver/Driver_SignupForm_Scree
 import Edit_Client_Profile_Screen from "./Screens/Cilent/Client_SignupForm_Screen"
 import DriverSchoolList from "./Screens/Driver/School_List_Screen"
 import DriverSchoolDetails from "./Screens/Driver/school_details"
+import Edit_Vehicle_Detail from "./Screens/Driver/edit_vehicle"
 import Toast from "react-native-toast-message";
 
 const Stack = createNativeStackNavigator();
@@ -69,7 +70,7 @@ const Navigation = () => {
             component={Bottom_Tab}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name="Edit_Profile" component={Edit_Profile} />
+          {/* <Stack.Screen name="Edit_Profile" component={Edit_Profile} /> */}
           <Stack.Screen name="LiveMap" component={LiveMap} />
           <Stack.Screen
             name="OTP_Conformation"
@@ -77,7 +78,7 @@ const Navigation = () => {
             options={{ headerShown: false }}
           />
           <Stack.Screen name="Client_Bottom_Tab" component={Client_Bottom_Tab} />
-          <Stack.Screen name="Profile_Screen" component={ProfileScreen} />
+          <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
           <Stack.Screen name="Find_Driver" component={Find_Driver} />
           {/* <Stack.Screen name="SchoolDetails" component={SchoolDetails} /> */}
           <Stack.Screen name="SchoolList" component={SchoolList} />
@@ -89,6 +90,8 @@ const Navigation = () => {
           <Stack.Screen name="Edit_Client_Profile_Screen" component={Edit_Client_Profile_Screen} />
           <Stack.Screen name="DriverSchoolList" component={DriverSchoolList} />
           <Stack.Screen name="DriverSchoolDetails" component={DriverSchoolDetails} />
+          <Stack.Screen name="Driver_Edit_Profile_Screen" component={Driver_Edit_Profile_Screen} />
+          <Stack.Screen name="Edit_Vehicle_Detail" component={Edit_Vehicle_Detail} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast />

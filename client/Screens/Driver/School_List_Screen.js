@@ -10,7 +10,6 @@ export default function DriverSchoolList({ navigation }) {
   const onSubmit = async () => {
     try {
       const token = await AsyncStorage.getItem("token");
-      console.log(token);
       const response = await fetch(`${BASE_URL}/schools`, {
         method: "GET",
         headers: {
