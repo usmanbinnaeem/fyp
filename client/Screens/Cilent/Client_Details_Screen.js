@@ -1,12 +1,14 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
-import DriverProfile_Button from "../../components/DriverProfile_Button";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
-const DriverDetails = ({ navigation }) => {
-  const drivername = "Driver Name";
-  const varifiedstatus = "Varified";
+const DriverDetails = ({ navigation, route }) => {
   const rating = "4.5";
 
+  const {
+    params: { driver },
+  } = route;
+
+  console.log(driver)
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={[styles.container, { paddingTop: 16 }]}>
@@ -22,30 +24,26 @@ const DriverDetails = ({ navigation }) => {
               style={[styles.logo, { marginTop: 30 }]}
               source={require("../../assets/Rectangle1308.png")}
             />
-            <Text style={styles.heading}>{drivername}</Text>
-            <Text style={styles.varifiey}>{varifiedstatus}</Text>
+            <Text style={styles.heading}>{driver.name}</Text>
+            <Text style={styles.varifiey}>{driver.approved ? "Verified" : "Un Verified"}</Text>
             <Text style={styles.address}>{rating} / 5.0</Text>
           </View>
         </View>
 
         <View style={[styles.container, { paddingTop: 16 }]}>
           <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-            <DriverProfile_Button
-              name="Available seats"
-              icon={require("../../assets/snack-icon.png")}
-              data="34"
-            />
-            <DriverProfile_Button
-              name="Vehicle Details"
-              icon={require("../../assets/snack-icon.png")}
-              onPress={() => {
-                navigation.navigate("VehicleDetails");
-              }}
-            />
-            <DriverProfile_Button
-              name="Connected Schools"
-              icon={require("../../assets/snack-icon.png")}
-            />
+            <Text>
+              Available Seats: {driver.vehicle.seats_capacity - driver.vehicle.booked_seats}{" "}
+            </Text>
+            <Text>Booked Seats: {driver.vehicle.booked_seats} </Text>
+          </View>
+
+          <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+            <Text>driver.vehicle Details</Text>
+            <Text>Reg No: {driver.vehicle.regNo} </Text>
+            <Text>Model: {driver.vehicle.color} </Text>
+            <Text>Color: {driver.vehicle.modal} </Text>
+            <Text>Verified: {driver.vehicle.verified} </Text>
           </View>
         </View>
       </View>

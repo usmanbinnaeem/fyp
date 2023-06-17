@@ -1,14 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import HomeButton from "../../components/Home_Button";
+BASE_URL = "http://192.168.0.181:3000";
 
 const HomeScreen = ({ navigation }) => {
-  const name = "Hassaan";
+  const [userDetails, setUserDetails] = useState({});
+
+  const fetchCurrentUserDetail = async () => {
+    try {
+      const token = await AsyncStorage.getItem("token");
+      const jsonValue = await AsyncStorage.getItem("user");
+      const user = await JSON.parse(jsonValue);
+      const { sub } = user;
+      const response = await fetch(`${BASE_URL}/users/${sub}`, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+      });
+      const json = await response.json();
+      if (!!json?.parent) {
+        setUserDetails(json.parent);
+        const parent = json?.parent;
+        const jsonValue = JSON.stringify(parent);
+        await AsyncStorage.setItem("parent", jsonValue);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    fetchCurrentUserDetail();
+  }, []);
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={[styles.container, { paddingTop: 60 }]}>
         <View style={{}}>
-          <Text style={styles.welcomeText}>Welcome {name}!</Text>
+          <Text style={styles.welcomeText}>Welcome {userDetails.name}!</Text>
           <Image
             style={[styles.logo, { marginTop: 23 }]}
             source={require("../../assets/Logo.png")}
@@ -26,8 +57,9 @@ const HomeScreen = ({ navigation }) => {
             />
             <HomeButton
               name="Schools"
+              icon={require("../../assets/school-Icon.png")}
               onPress={() => {
-                navigation.navigate("SchoolList");
+                navigation.navigate("Client_SchoolList");
               }}
             />
           </View>
@@ -41,7 +73,7 @@ const HomeScreen = ({ navigation }) => {
               }}
             />
             <HomeButton
-              name="Client_Subscription"
+              name="Subscription"
               icon={require("../../assets/Subscription.png")}
               onPress={() => {
                 navigation.navigate("Client_Subscription");

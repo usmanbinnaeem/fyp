@@ -3,7 +3,7 @@ import {
   Get,
   Post,
   Body,
-  Patch,
+  Put,
   Param,
   Delete,
   Query,
@@ -38,7 +38,7 @@ export class ParentsController {
     return this.parentsService.findOne(+id, ['students']);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() updateParentDto: UpdateParentDto) {
     return this.parentsService.update(+id, updateParentDto);
   }

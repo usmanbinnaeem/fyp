@@ -14,7 +14,7 @@ import OTP_Conformation from "./Screens/OTPConformation_Screen";
 import SignUp_Form from "./Screens/SignupForm_Screen";
 import SchoolList from "./Screens/SchoolList_Screen";
 // import SchoolDetails from "./Screens/SchoolDetails_Screen";
-import DriverDetails from "./Screens/DriverDetails_Screen";
+import DriverDetails from "./Screens/Cilent/Client_Details_Screen";
 import Client_Subscription from "./Screens/Cilent/Client_Subscription_Screen";
 import Driver_Subscription from "./Screens/Driver/Driver_Subscription_Screen"
 import LiveMap from "./Screens/Map_Screen";
@@ -26,6 +26,8 @@ import Edit_Client_Profile_Screen from "./Screens/Cilent/Client_SignupForm_Scree
 import DriverSchoolList from "./Screens/Driver/School_List_Screen"
 import DriverSchoolDetails from "./Screens/Driver/school_details"
 import Edit_Vehicle_Detail from "./Screens/Driver/edit_vehicle"
+import Client_SchoolList from "./Screens/Cilent/Client_SchoolList_Screen"
+import Edit_Profile_Screen from "./Screens/Cilent/Client_Edit_Profile_Screen"
 import Toast from "react-native-toast-message";
 
 const Stack = createNativeStackNavigator();
@@ -92,6 +94,8 @@ const Navigation = () => {
           <Stack.Screen name="DriverSchoolDetails" component={DriverSchoolDetails} />
           <Stack.Screen name="Driver_Edit_Profile_Screen" component={Driver_Edit_Profile_Screen} />
           <Stack.Screen name="Edit_Vehicle_Detail" component={Edit_Vehicle_Detail} />
+          <Stack.Screen name="Client_SchoolList" component={Client_SchoolList} />
+          <Stack.Screen name="Edit_Profile_Screen" component={Edit_Profile_Screen} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast />

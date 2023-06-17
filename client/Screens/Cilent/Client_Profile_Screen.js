@@ -24,7 +24,7 @@ export default function ProfileScreen({ navigation }) {
         <Arrow_Button
           name="Edit Personal Info"
           onPress={() => {
-            navigation.navigate("Edit_Profile");
+            navigation.navigate("Edit_Profile_Screen");
           }}
         />
         <Arrow_Button name="Add Payment Method" onPress={handlePress} />
