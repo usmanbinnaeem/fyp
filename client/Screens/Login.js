@@ -5,7 +5,7 @@ import Toast from "react-native-toast-message";
 import Basic_Button from "../components/Basic_Button";
 import Text_Field from "../components/Text_Field";
 import jwt_decode from "jwt-decode";
-BASE_URL = "http://192.168.0.181:3000";
+BASE_URL = "http://192.168.43.47:3000";
 
 const Login = ({ navigation }) => {
   const [phone, setPhone] = useState("");
@@ -26,7 +26,9 @@ const Login = ({ navigation }) => {
   };
 
   const onSubmit = async () => {
+    console.log("error")
     try {
+      console.log("error")
       const response = await fetch(`${BASE_URL}/authentication/sign-in`, {
         method: "POST",
         headers: {
@@ -57,6 +59,7 @@ const Login = ({ navigation }) => {
         }
       }
     } catch (error) {
+      console.log(error)
       console.error(error);
     }
   };

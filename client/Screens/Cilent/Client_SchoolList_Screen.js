@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ScrollView, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import SchoolInfo_Button from "../../components/School_Info_Button";
-BASE_URL = "http://192.168.0.181:3000";
+BASE_URL = "http://192.168.43.47:3000";
 
 export default function Client_SchoolList({ navigation }) {
   const [schools, setSchools] = useState([]);

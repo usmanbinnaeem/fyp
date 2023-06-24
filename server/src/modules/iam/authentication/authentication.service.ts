@@ -47,14 +47,16 @@ export class AuthenticationService {
   ) {}
 
   async signUp(signUpDto: SignUpDto) {
+    console.log('-------');
     try {
       const user = new User();
       user.phoneNumber = signUpDto.phoneNumber;
       user.password = await this.hashingService.hash(signUpDto.password);
       user.role = signUpDto.role;
       const otp = await this.sendOtp(signUpDto.phoneNumber);
-      console.log(otp);
+      console.log('=> ', otp);
       const newUser = await this.usersRepository.save(user);
+      console.log('==> ', newUser);
       return {
         success: true,
         message: 'created successfully',
@@ -62,6 +64,7 @@ export class AuthenticationService {
         user: newUser,
       };
     } catch (err) {
+      console.log('error', err);
       const pgUniqueViolationErrorCode = '23505';
       if (err.code === pgUniqueViolationErrorCode) {
         throw new ConflictException();
@@ -77,7 +80,7 @@ export class AuthenticationService {
 
     await this.twilioClient.messages.create({
       body: `Your OTP is: ${otp}`,
-      from: '+14344742641',
+      from: process.env.TWILIO_PHONE_NUMBER,
       to: phoneNumber,
     });
     this.refreshTokenIdsStorage.insert_otp(otpEntry.id, String(otpEntry.otp));

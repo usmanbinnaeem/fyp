@@ -4,7 +4,7 @@ import MapView, { Marker } from "react-native-maps";
 import { View, StyleSheet, PermissionsAndroid, Platform } from "react-native";
 import Geolocation from "react-native-geolocation-service";
 
-BASE_URL = "http://192.168.0.181:3000";
+BASE_URL = "http://192.168.43.47:3000";
 
 const LiveMap = () => {
   const [location, setLocation] = useState({ lat: null, lng: null });
