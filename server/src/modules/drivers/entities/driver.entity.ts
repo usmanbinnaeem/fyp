@@ -40,6 +40,12 @@ export class Driver extends BaseEntity {
   @Column({ nullable: true })
   approved: boolean;
 
+  @Column({ nullable: true })
+  profileImageUrl: string;
+
+  @Column({ nullable: true })
+  licenseImageUrl: string;
+
   @OneToOne(() => Vehicle, (vehicle) => vehicle.driver)
   vehicle: Vehicle;
 

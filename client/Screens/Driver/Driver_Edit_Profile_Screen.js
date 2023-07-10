@@ -3,6 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 import Text_Field from "../../components/Text_Field";
 import Basic_Button from "../../components/Basic_Button";
+const BASE_URL = "http://192.168.137.224:5000";
 
 function Driver_Edit_Profile_Screen({ navigation }) {
   const [driverProfile, setDriverProfile] = useState({

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, ScrollView, Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Info_Button from "../../components/Info_Button";
 import Basic_Button from "../../components/Basic_Button";
-BASE_URL = "http://192.168.43.47:3000";
+const BASE_URL = "http://192.168.137.224:5000";
 
 const DriverSchoolDetails = ({ navigation, route }) => {
   const {

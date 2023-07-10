@@ -25,5 +25,8 @@ export class CreateParentDto {
   zip: string;
 
   @IsOptional()
+  profileImageUrl: string;
+
+  @IsOptional()
   user: User;
 }

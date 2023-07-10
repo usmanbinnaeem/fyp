@@ -30,5 +30,11 @@ export class CreateDriverDto {
   approved: boolean;
 
   @IsOptional()
+  profileImageUrl: string;
+
+  @IsOptional()
+  licenseImageUrl: string;
+
+  @IsOptional()
   user: User;
 }

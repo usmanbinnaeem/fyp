@@ -1,27 +1,28 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Put,
-  Param,
+  Controller,
   Delete,
-  Query,
+  Get,
+  Param,
+  Post,
+  Put,
+  Query
 } from '@nestjs/common';
+import { Auth } from '../iam/authentication/decorators/auth.decorator';
+import { AuthType } from '../iam/authentication/enum/auth-type.enum';
 import { DriversService } from './drivers.service';
 import { CreateDriverDto } from './dto/create-driver.dto';
 import { UpdateDriverDto } from './dto/update-driver.dto';
-import { Auth } from '../iam/authentication/decorators/auth.decorator';
-import { AuthType } from '../iam/authentication/enum/auth-type.enum';
 
+@Auth(AuthType.None)
 @Controller('drivers')
 export class DriversController {
-  constructor(private readonly driversService: DriversService) {}
+  constructor(private readonly driversService: DriversService) { }
 
-  @Auth(AuthType.None)
+  // @Auth(AuthType.None)
   @Post()
   create(@Body() createDriverDto: CreateDriverDto) {
+    console.log({ createDriverDto })
     return this.driversService.create(createDriverDto);
   }
 

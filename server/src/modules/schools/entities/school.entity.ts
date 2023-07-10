@@ -11,20 +11,23 @@ export class School extends BaseEntity {
   @Column()
   email: string;
 
-  @Column()
+  @Column({ nullable: true })
   address_line_1: string;
 
-  @Column()
+  @Column({ nullable: true })
   address_line_2: string;
 
-  @Column()
+  @Column({ nullable: true })
   city: string;
 
-  @Column()
+  @Column({ nullable: true })
   state: string;
 
-  @Column()
+  @Column({ nullable: true })
   zip: string;
+
+  @Column({ nullable: true })
+  profileImage: string;
 
   @OneToMany(() => Student, (student) => student.school, {
     onDelete: 'CASCADE',

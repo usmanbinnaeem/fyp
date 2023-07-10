@@ -3,7 +3,7 @@ import { Image, ScrollView, StyleSheet, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Basic_Button from "../../components/Basic_Button";
 import Text_Field from "../../components/Text_Field";
-BASE_URL = "http://192.168.43.47:3000";
+const BASE_URL = "http://192.168.137.224:5000";
 
 export default function Edit_Driver_Profile_Screen({ navigation }) {
   const [driverProfile, setDriverProfile] = useState({
@@ -15,13 +15,17 @@ export default function Edit_Driver_Profile_Screen({ navigation }) {
     zipCode: "",
     address_line_1: "",
     address_line_2: "",
+    profileImageUrl: "",
+    licenseImageUrl: "",
+    approved: false
   });
 
   const onSubmit = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem("userData");
       const user = JSON.parse(jsonValue);
-      await fetch(`${BASE_URL}/drivers`, {
+    
+      const res = await fetch(`${BASE_URL}/drivers`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -35,6 +39,7 @@ export default function Edit_Driver_Profile_Screen({ navigation }) {
       navigation.navigate("Login");
     } catch (error) {
       console.error(error);
+      console.log(error.data);
     }
   };
 
@@ -122,7 +127,7 @@ export default function Edit_Driver_Profile_Screen({ navigation }) {
               })
             }
           />
-          <Basic_Button name="Save" onPress={onSubmit} />
+          <Basic_Button name="Save" onPress={() => onSubmit()} />
           <View style={{ paddingTop: "100%" }} />
         </View>
       </View>

@@ -22,4 +22,7 @@ export class CreateSchoolDto {
 
   @IsOptional()
   zip: string;
+
+  @IsOptional()
+  profileImage: string;
 }

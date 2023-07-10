@@ -1,6 +1,5 @@
 import * as React from "react";
-import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
-import Constants from "expo-constants";
+import { Image, StyleSheet, Text, View } from "react-native";
 import Arrow_Button from "../../components/Arrow_Button";
 
 export default function ProfileScreen({ navigation }) {
@@ -24,7 +23,7 @@ export default function ProfileScreen({ navigation }) {
         <Arrow_Button
           name="Edit Personal Info"
           onPress={() => {
-            navigation.navigate("Edit_Profile");
+            navigation.navigate("Edit_Driver_Profile_Screen");
           }}
         />
         <Arrow_Button name="Add Payment Method" onPress={handlePress} />

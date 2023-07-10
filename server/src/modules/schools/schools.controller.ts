@@ -3,14 +3,17 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
+  Put,
 } from '@nestjs/common';
 import { SchoolsService } from './schools.service';
 import { CreateSchoolDto } from './dto/create-school.dto';
 import { UpdateSchoolDto } from './dto/update-school.dto';
+import { AuthType } from '../iam/authentication/enum/auth-type.enum';
+import { Auth } from '../iam/authentication/decorators/auth.decorator';
 
+@Auth(AuthType.None)
 @Controller('schools')
 export class SchoolsController {
   constructor(private readonly schoolsService: SchoolsService) {}
@@ -30,7 +33,7 @@ export class SchoolsController {
     return this.schoolsService.findOne(+id, ['drivers']);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() updateSchoolDto: UpdateSchoolDto) {
     return this.schoolsService.update(+id, updateSchoolDto);
   }

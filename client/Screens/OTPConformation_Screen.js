@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import Basic_Button from "../components/Basic_Button";
 import Number_Field from "../components/Number_Field";
 import Toast from "react-native-toast-message";
+const BASE_URL = "http://192.168.137.224:5000";
 
 const OTP_Conformation = ({ navigation, route }) => {
   const {

@@ -26,6 +26,9 @@ export class Parent extends BaseEntity {
   @Column({ nullable: true })
   zip: string;
 
+  @Column({ nullable: true })
+  profileImageUrl: string;
+
   @OneToOne(() => User, (user) => user.parent)
   @JoinColumn()
   user: User;

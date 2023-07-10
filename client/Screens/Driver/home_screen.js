@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import HomeButton from "../../components/Home_Button";
-BASE_URL = "http://192.168.43.47:3000";
+const BASE_URL = "http://192.168.137.224:5000";
 
 const HomeScreen = ({ navigation, route }) => {
   const [userDetails, setUserDetails] = useState({});

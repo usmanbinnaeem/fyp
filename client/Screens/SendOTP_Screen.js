@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Basic_Button from "../components/Basic_Button";
 import Text_Field from "../components/Text_Field";
-BASE_URL = "http://192.168.43.47:5000";
+const BASE_URL = "http://192.168.137.224:5000";
 
 const SendOTP = ({ navigation, route }) => {
   const {

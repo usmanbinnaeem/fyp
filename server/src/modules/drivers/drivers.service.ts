@@ -15,6 +15,7 @@ export class DriversService {
   ) {}
 
   create(createDriverDto: CreateDriverDto) {
+    console.log(createDriverDto)
     return this.repository.save(createDriverDto);
   }
 

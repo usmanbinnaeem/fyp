@@ -18,7 +18,7 @@ const HomeScreen = ({ navigation }) => {
         <View style={[styles.container, { paddingTop: 16 }]}>
           <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
             <HomeButton
-              name="Find Vehicle"
+              name="Edit Vehicle"
               icon={require("../assets/Track.png")}
               onPress={() => {
                 navigation.navigate("Find_Driver");
@@ -32,7 +32,7 @@ const HomeScreen = ({ navigation }) => {
             />
           </View>
 
-          <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+          {/* <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
             <HomeButton
               name="Track"
               icon={require("../assets/Track.png")}
@@ -47,7 +47,7 @@ const HomeScreen = ({ navigation }) => {
                 navigation.navigate("Driver_Subscription");
               }}
             />
-          </View>
+          </View> */}
         </View>
       </View>
     </ScrollView>
